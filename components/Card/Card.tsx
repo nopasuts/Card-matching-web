@@ -29,6 +29,7 @@ const Card = ({
   secondCard,
   setSecondCard,
   onFetch,
+  setClickCount,
 }: IProps) => {
   const [value, setValue] = useState(null);
 
@@ -37,7 +38,8 @@ const Card = ({
   const handleClick = async () => {
     if (!firstCard || !secondCard) {
       const result = await onOpen(position);
-      await onEachClick();
+      const clickedResult = await onEachClick();
+      setClickCount(clickedResult?.click_count)
       setValue(result?.value)
       if (firstCard) {
         if (secondCard) {

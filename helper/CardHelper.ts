@@ -23,5 +23,6 @@ export const onEachClick = async () => {
   const payload = {
     board_id: c_board_id,
   };
-  await API.updateClick(payload)
+  const result = await API.updateClick(payload)
+  return result;
 }

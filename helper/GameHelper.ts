@@ -4,12 +4,14 @@ import { API } from "services";
 
 export const useFetch = () => {
   const [data, setData] = useState(null);
+  const [clickCount, setClickCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const onFetch = async (board_id) => {
     setLoading(true);
     const result = await API.getGame(board_id);
     setData(result);
+    setClickCount(result?.click_count);
     setLoading(false);
   }
 
@@ -17,6 +19,7 @@ export const useFetch = () => {
     setLoading(true);
     const result = await API.createGame();
     setData(result);
+    setClickCount(result?.click_count);
     setCookie('c_board_id', result?.board_id)
     setLoading(false);
   }
@@ -43,5 +46,7 @@ export const useFetch = () => {
     loading,
     onFetch,
     onCreate,
+    clickCount,
+    setClickCount,
   }
 }

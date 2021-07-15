@@ -8,11 +8,12 @@ interface IProps {
 }
 
 const DetailPanel = ({ click_count, personal_best, global_best }: IProps) => {
+
   return (
     <div className={styles.detailPanel__container}>
       <div className={styles.detailPanel__data}>
         <h4>Click:</h4>
-        <span>{click_count || '-'}</span>
+        <span>{click_count}</span>
       </div>
       <div className={styles.detailPanel__data}>
         <h4>My best:</h4>
