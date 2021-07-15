@@ -1,0 +1,13 @@
+.detailPanel {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__data {
+    align-items: center;
+    text-align: center;
+  }
+}

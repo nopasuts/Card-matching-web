@@ -1,0 +1,14 @@
+.card {
+  &__container {
+    border: 1px solid black;
+    min-height: 220px;
+    min-width: 150px;
+    margin: 20px;
+  }
+  &__open {
+    background-color: white !important;
+  }
+  &__close {
+    background-color: #92DFF3 !important;
+  }
+}
