@@ -41,7 +41,7 @@ const CardsColumn = ({
         const card = cards.find((eachCard: ICard) => eachCard.position === position)
 
         return (
-          <Col key={each}>
+          <Col key={each} xs={6} md={'auto'}>
             <Card
               card={card}
               firstCard={firstCard}

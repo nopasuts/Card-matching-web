@@ -12,7 +12,6 @@ const HomePage = () => {
     onCreate,
     onFetch,
     clickCount,
-    setClickCount,
   } = useFetch();
   const {
     stat,
@@ -41,7 +40,7 @@ const HomePage = () => {
   return (
     <div>
       <Row>
-        <Col md={3} lg={3}>
+        <Col xs={12} md={3} lg={3}>
           <DetailPanel
             click_count={clickCount}
             personal_best={stat?.best_click_count}
@@ -51,8 +50,8 @@ const HomePage = () => {
             <Button onClick={onCreate}>New game</Button>
           </div>
         </Col>
-        <Col md={9}>
-          <CardPanel data={data} onFetch={onFetch} setClickCount={setClickCount} />
+        <Col xs={12} md={9}>
+          <CardPanel data={data} onFetch={onFetch}/>
         </Col>
       </Row>
     </div>
