@@ -13,14 +13,11 @@ interface ICard {
 
 interface IProps {
   card: ICard
-  onClick: Function
-  isTempOpen: boolean
   firstCard: string
   setFirstCard: Function
   secondCard: string
   setSecondCard: Function
   onFetch: Function
-  setClickCount: Function
 }
 
 const Card = ({
@@ -30,7 +27,6 @@ const Card = ({
   secondCard,
   setSecondCard,
   onFetch,
-  setClickCount,
 }: IProps) => {
   const [value, setValue] = useState(null);
 
@@ -38,25 +34,26 @@ const Card = ({
 
   const handleClick = async () => {
     if (!firstCard || !secondCard) {
-      const c_board_id = getCookie('c_board_id');
-      const result = await onOpen(position);
-      const clickedResult = await onEachClick();
-      setClickCount(clickedResult?.click_count)
-      setValue(result?.value)
-      if (firstCard) {
-        if (secondCard) {
-          setFirstCard('');
-          setSecondCard('');
+      if (firstCard !== position) {
+        const c_board_id = getCookie('c_board_id');
+        const result = await onOpen(position);
+        await onEachClick();
+        setValue(result?.value)
+        if (firstCard) {
+          if (secondCard) {
+            setFirstCard('');
+            setSecondCard('');
+          } else {
+            setSecondCard(position)
+            await onMatchCard(firstCard, position);
+            await onFetch(c_board_id);
+            setFirstCard('');
+            setSecondCard('');
+          }
         } else {
-          setSecondCard(position)
-          await onMatchCard(firstCard, position);
+          setFirstCard(position);
           await onFetch(c_board_id);
-          setFirstCard('');
-          setSecondCard('');
         }
-      } else {
-        setFirstCard(position);
-        await onFetch(c_board_id);
       }
     }
   }

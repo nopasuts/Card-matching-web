@@ -20,7 +20,6 @@ interface IProps {
     cards: ICard[]
   }
   onFetch: Function
-  setClickCount: Function
 }
 
 const CardsColumn = ({
@@ -32,7 +31,6 @@ const CardsColumn = ({
   secondCard,
   setSecondCard,
   onFetch,
-  setClickCount,
 }) => {
   const columnsArray = numberToArray(columns)
 
@@ -51,7 +49,6 @@ const CardsColumn = ({
               secondCard={secondCard}
               setSecondCard={setSecondCard}
               onFetch={onFetch}
-              setClickCount={setClickCount}
             />
           </Col>
         )
@@ -69,7 +66,6 @@ const CardsRow = ({
   secondCard,
   setSecondCard,
   onFetch,
-  setClickCount,
 }) => {
   const rowsArray = numberToArray(rows);
 
@@ -86,14 +82,13 @@ const CardsRow = ({
             secondCard={secondCard}
             setSecondCard={setSecondCard}
             onFetch={onFetch}
-            setClickCount={setClickCount}
           />
       ))}
     </div>
   );
 };
 
-const CardPanel = ({ data, onFetch, setClickCount }: IProps) => {
+const CardPanel = ({ data, onFetch }: IProps) => {
   const [firstCard, setFirstCard] = useState('');
   const [secondCard, setSecondCard] = useState('');
 
@@ -108,7 +103,6 @@ const CardPanel = ({ data, onFetch, setClickCount }: IProps) => {
         secondCard={secondCard}
         setSecondCard={setSecondCard}
         onFetch={onFetch}
-        setClickCount={setClickCount}
       />
     </Container>
   )
