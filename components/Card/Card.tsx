@@ -20,6 +20,7 @@ interface IProps {
   secondCard: string
   setSecondCard: Function
   onFetch: Function
+  setClickCount: Function
 }
 
 const Card = ({
@@ -37,6 +38,7 @@ const Card = ({
 
   const handleClick = async () => {
     if (!firstCard || !secondCard) {
+      const c_board_id = getCookie('c_board_id');
       const result = await onOpen(position);
       const clickedResult = await onEachClick();
       setClickCount(clickedResult?.click_count)
@@ -46,17 +48,15 @@ const Card = ({
           setFirstCard('');
           setSecondCard('');
         } else {
-          const c_board_id = getCookie('c_board_id');
           setSecondCard(position)
-          const matchedResult = await onMatchCard(firstCard, position);
-          if (matchedResult === 'SUCCESS') {
-            await onFetch(c_board_id);
-          }
+          await onMatchCard(firstCard, position);
+          await onFetch(c_board_id);
           setFirstCard('');
           setSecondCard('');
         }
       } else {
         setFirstCard(position);
+        await onFetch(c_board_id);
       }
     }
   }

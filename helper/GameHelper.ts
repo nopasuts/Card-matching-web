@@ -27,7 +27,6 @@ export const useFetch = () => {
   useEffect(() => {
     const initialGame = async () => {
       const c_board_id = getCookie('c_board_id');
-      console.log(c_board_id);
       if (c_board_id && c_board_id !== 'undefined') {
         try {
           await onFetch(c_board_id)
