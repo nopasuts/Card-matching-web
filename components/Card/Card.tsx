@@ -75,10 +75,11 @@ const Card = ({
       className={`${styles.card__container} ${card?.is_open || isTempOpen ? `${styles.card__open}` : `${styles.card__close}`} `}
       onClick={() => handleClick()}
       disabled={card?.is_open}
+      data-cy="card"
     >
       <div>
         {card?.is_open || isTempOpen ?
-          (<h3>{value}</h3>)
+          (<h3 data-cy="card-value">{value}</h3>)
           : null}
       </div>
     </button>

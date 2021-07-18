@@ -9,6 +9,15 @@ Develop through docker:
 
 App will start using port `3000`.
 
+For production version, please modify `Dockerfile` to `yarn build` and `yarn start` and instead of `yarn dev`
+
+## Test
+Install dev dependencies:
+``yarn install``
+
+Test is run by cypress framework
+``yarn unit-test``
+
 ## ENV
 Modify environment variables in `.env` file
 

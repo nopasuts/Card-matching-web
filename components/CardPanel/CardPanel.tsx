@@ -35,13 +35,13 @@ const CardsColumn = ({
   const columnsArray = numberToArray(columns)
 
   return (
-    <Row>
+    <Row data-cy="card-row">
       {columnsArray.map((each) => {
         const position = `${each}x${rows}`
         const card = cards.find((eachCard: ICard) => eachCard.position === position)
 
         return (
-          <Col key={each} xs={6} md={'auto'}>
+          <Col key={each} xs={6} md={'auto'} data-cy="card-col">
             <Card
               card={card}
               firstCard={firstCard}
@@ -93,7 +93,7 @@ const CardPanel = ({ data, onFetch }: IProps) => {
   const [secondCard, setSecondCard] = useState('');
 
   return (
-    <Container fluid>
+    <Container fluid data-cy="card-panel-container">
       <CardsRow
         rows={data?.rows}
         columns={data?.columns}

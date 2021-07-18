@@ -20,7 +20,8 @@
       "@services/*": ["services/"],
       "@utils/*": ["utils/"],
       "@helper/*": ["helper/*"],
-    }
+    },
+    "types": ["cypress", "@testing-library/cypress"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", ".next", "out"]
